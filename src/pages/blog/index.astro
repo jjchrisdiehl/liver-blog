@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getPosts } from '../../lib/emdash';
+
+const posts = await getPosts();
+---
+
+<BaseLayout title="Blog Archive" isWide={true}>
+  <h1>Blog Archive</h1>
+  <p style="color: var(--color-text-muted); margin-bottom: 2rem;">
+    Explore all articles, news, and posts.
+  </p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+    {posts.map((post) => (
+      <PostCard post={post} />
+    ))}
+  </div>
+</BaseLayout>

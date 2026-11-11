@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getPosts } from '../lib/emdash';
+
+const allPosts = await getPosts();
+const recentPosts = allPosts.slice(0, 3);
+---
+
+<BaseLayout title="Home" isWide={true}>
+  <section style="margin-bottom: 4rem; text-align: center;">
+    <h1 style="font-size: var(--fs-2xl);">Insights & Engineering</h1>
+    <p style="font-size: var(--fs-md); color: var(--color-text-muted); max-width: 600px; margin: 1rem auto 2rem;">
+      A modern blog platform built with Astro, Vite, CSS Modules, and Emdash CMS.
+    </p>
+  </section>
+
+  <section>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+      <h2>Recent Posts</h2>
+      <a href="/blog">View all &rarr;</a>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+      {recentPosts.map((post) => (
+        <PostCard post={post} />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

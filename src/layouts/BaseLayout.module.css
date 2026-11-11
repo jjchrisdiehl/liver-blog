@@ -1,0 +1,27 @@
+/* src/layouts/BaseLayout.module.css */
+.mainContainer {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem;
+}
+
+.wide {
+  max-width: var(--max-width-wide);
+}
+
+.footer {
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  padding: 2rem 1.25rem;
+  margin-top: 4rem;
+}
+
+.footerInner {
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}

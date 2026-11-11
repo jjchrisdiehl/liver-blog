@@ -1,0 +1,57 @@
+/* src/components/PostCard.module.css */
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.cardImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin: 0;
+  border-radius: 0;
+}
+
+.cardBody {
+  padding: 1.25rem;
+}
+
+.meta {
+  color: var(--color-text-muted);
+}
+
+.title {
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.excerpt {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  margin-bottom: 1rem;
+}
+
+.taxonomies {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}

@@ -1,0 +1,38 @@
+---
+import type { Post, TaxonomyItem } from '../lib/emdash';
+import styles from './PostCard.module.css';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+---
+
+<article class={styles.card}>
+  {post.featuredImage && (
+    <img 
+      src={post.featuredImage.url} 
+      alt={post.featuredImage.altText || post.title} 
+      class={styles.cardImage} 
+      loading="lazy" 
+    />
+  )}
+  <div class={styles.cardBody}>
+    <small class={styles.meta}>
+      {new Date(post.publishedAt).toLocaleDateString('en-US', { dateStyle: 'medium' })}
+    </small>
+    <h3 class={styles.title}>
+      <a href={`/blog/${post.slug}`}>{post.title}</a>
+    </h3>
+    <p class={styles.excerpt}>{post.excerpt}</p>
+    
+    {post.categories && post.categories.length > 0 && (
+      <div class={styles.taxonomies}>
+        {post.categories.map((cat: TaxonomyItem) => (
+          <span class={styles.badge}>{cat.name}</span>
+        ))}
+      </div>
+    )}
+  </div>
+</article>
