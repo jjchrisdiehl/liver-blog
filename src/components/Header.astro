@@ -1,14 +1,16 @@
 ---
 import styles from './Header.module.css';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <header class={styles.header}>
   <nav class={styles.nav}>
-    <a href="/" class={styles.brand}>Liver Blog</a>
+    <a href={`${base}/`} class={styles.brand}>Liver Blog</a>
     <div class={styles.links}>
-      <a href="/">Home</a>
-      <a href="/blog">Blog</a>
-      <a href="/about">About</a>
+      <a href={`${base}/`}>Home</a>
+      <a href={`${base}/blog`}>Blog</a>
+      <a href={`${base}/about`}>About</a>
     </div>
   </nav>
 </header>

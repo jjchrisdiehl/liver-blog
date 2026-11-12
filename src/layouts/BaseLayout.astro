@@ -10,6 +10,7 @@ interface Props {
 }
 
 const { title, description = 'An Emdash-powered Astro blog', isWide = false } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!DOCTYPE html>
@@ -17,16 +18,15 @@ const { title, description = 'An Emdash-powered Astro blog', isWide = false } = 
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     <title>{title} | Liver Blog</title>
     <meta name="description" content={description} />
   </head>
   <body>
     <Header />
-
     <main class:list={[styles.mainContainer, { [styles.wide]: isWide }]}>
       <slot />
     </main>
-
     <footer class={styles.footer}>
       <div class={styles.footerInner}>
         <p>&copy; {new Date().getFullYear()} Liver Blog. Powered by Astro & Emdash CMS.</p>
